@@ -35,27 +35,29 @@ const ProductDetail = () => {
         {/* Product Image and Details */}
         <div className="flex flex-col md:flex-row md:gap-4 lg:pl-[5rem] lg:flex-row relative my-8">
           {/* Side Images */}
-          <div className=" md:pl-8 md:flex-col lg:flex-row gap-4 lg:ml-4">
-            {product.images.slice(0, 3).map((img, index) => (
+          <div className=' flex'>
+            <div className=" pl-4 md:pl-8 md:flex-col lg:flex-row gap-4 lg:ml-4">
+              {product.images.slice(0, 3).map((img, index) => (
+                <img
+                  key={index}
+                  src={img}
+                  alt={`product-${index}`}
+                  className="h-[6rem] w-[6rem] md:h-[8rem] md:w-[12rem] object-cover lg:mt-4 lg:h-[15rem] lg:w-[15rem] mt-4"
+                />
+              ))}
+            </div>
+            {/* Main Product Image */}
+            <div className=" relative pt-[5rem] md:ml-11 lg:ml-32 mb-4 lg:mb-0">
               <img
-                key={index}
-                src={img}
-                alt={`product-${index}`}
-                className="h-[5rem] w-[5rem] md:h-[7rem] md:w-[8rem] object-cover lg:mt-4 lg:h-[15rem] lg:w-[15rem] mt-4"
+                src={product.images[3]}
+                alt="main-product"
+                className="h-[13rem] md:h-[14rem] md:w-[16rem] md:mt-16 lg:h-[27rem] lg:w-[28rem] object-cover"
               />
-            ))}
-          </div>
-          {/* Main Product Image */}
-          <div className="relative ml-16 lg:ml-32 mb-4 lg:mb-0">
-            <img
-              src={product.images[3]}
-              alt="main-product"
-              className="h-32 md:h-40 md:mt-24 lg:h-[27rem] lg:w-[28rem] object-cover"
-            />
+            </div>
           </div>
 
           {/* Product Information */}
-          <div className="mt-[3rem] md:ml-12 lg:mt-[15rem] lg:ml-16">
+          <div className="mt-[3rem] ml-3 md:ml-12 lg:mt-[15rem] lg:ml-16">
             <h2 className="text-4xl md:font-semibold font-bold">
               {product.name}
             </h2>
@@ -69,12 +71,12 @@ const ProductDetail = () => {
                 ({product.reviews} Reviews)
               </span>
             </div>
-            <p className="mt-4 md:font-bold text-gray-600">
+            <p className="mt-4 ml-3 md:font-bold text-gray-600">
               {product.deliveryInfo}
             </p>
 
             {/* Available Colors */}
-            <div className="flex items-center mt-4">
+            <div className="flex ml-2 items-center mt-4">
               <p className="mr-2 md:font-bold md:text-[1rem]">
                 Also available in:
               </p>
@@ -104,7 +106,7 @@ const ProductDetail = () => {
 
             {/* Add to Cart Button */}
             <Button
-              className="mt-6 px-6 py-3 md:px-[6rem] bg-[#033F63] text-white font-medium rounded-md hover:bg-blue-700 border-none"
+              className=" ml-2 mt-6 px-14 py-3 md:px-[6rem] bg-[#033F63] text-white font-medium rounded-md hover:bg-blue-700 border-none"
               label="Add to Cart"
             />
           </div>
