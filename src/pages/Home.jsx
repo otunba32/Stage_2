@@ -1,13 +1,14 @@
-import React from 'react'
-import Shop from './Shop'
-import { Footer } from '../component/Footer'
-
+import React from "react";
+import Shop from "../component/Shop";
+import { Footer } from "../component/Footer";
+import { Banner } from "../component/Banner";
 
 export const Home = () => {
   return (
     <div>
-        <Shop />
-        <Footer />
+      <Banner />
+      <Shop />
+      <Footer />
     </div>
-  )
-}
+  );
+};
