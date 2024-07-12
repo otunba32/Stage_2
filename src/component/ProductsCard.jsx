@@ -1,5 +1,5 @@
 import React from "react";
-import { FaStar, FaRegHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 export function Products(props) {
   return (
