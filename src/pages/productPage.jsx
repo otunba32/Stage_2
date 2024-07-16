@@ -7,7 +7,6 @@ export const Product = (prop) => {
   return (
     <div>
       <Shop />
-
       <Footer />
     </div>
   );
