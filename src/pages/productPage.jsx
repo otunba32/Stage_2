@@ -1,13 +1,11 @@
 import React from "react";
-import { Footer } from "../component/Footer";
 import ProductDetail from "../component/ProductDetail";
-import Shop from "../component/Shop";
+import { Layout } from "../component/Layout";
 
-export const Product = (prop) => {
+export const Product = () => {
   return (
-    <div>
-      <Shop />
-      <Footer />
-    </div>
+    <Layout>
+      <ProductDetail />
+    </Layout>
   );
 };
