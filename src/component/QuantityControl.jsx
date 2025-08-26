@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+// src/component/QuantityControl.jsx
+
+import React from 'react';
 import { MdAdd, MdRemove } from 'react-icons/md';
 import { useCart } from './CartContext';
 
+export const QuantityControl = ({ item }) => {
+  const { dispatch } = useCart();
 
-export const QuantityControl = ( {item} ) => {
-    const { dispatch,  } = useCart();
   const handleIncrement = () => {
     dispatch({ type: "UPDATE_ITEM", payload: { ...item, qty: item.qty + 1 } });
   };
 
   const handleDecrement = () => {
+    // Prevent quantity from going below 1
     if (item.qty > 1) {
       dispatch({
         type: "UPDATE_ITEM",
@@ -17,24 +20,27 @@ export const QuantityControl = ( {item} ) => {
       });
     }
   };
-  const updateQty = (product, qty) => {
-    dispatch({ type: 'UPDATE_ITEM', payload: { ...product, qty } });
-  };
+
   return (
-    <div className="flex items-center space-x-4 mt-2">
+    <div className="flex items-center border rounded-md">
       <button
-        onClick={() => handleDecrement()}
-        className=" px-[0.4rem] py-[0.2rem] lg:px-2 lg:py-1 hover:bg-indigo-100 rounded"
+        type="button" // Accessibility: prevent form submission
+        aria-label="Decrease quantity" // Accessibility: label for screen readers
+        onClick={handleDecrement}
+        className="p-2 text-gray-600 hover:bg-gray-100 disabled:opacity-50"
+        disabled={item.qty <= 1} // Disable button when quantity is 1
       >
         <MdRemove />
       </button>
-      <span>{item.qty}</span>
+      <span className="px-4 font-semibold">{item.qty}</span>
       <button
-        onClick={() => handleIncrement()}
-        className="px-[0.4rem] py-[0.2rem] lg:px-2 lg:py-1 bg-gray-200 hover:bg-green-400 rounded"
+        type="button" // Accessibility: prevent form submission
+        aria-label="Increase quantity" // Accessibility: label for screen readers
+        onClick={handleIncrement}
+        className="p-2 text-gray-600 hover:bg-gray-100"
       >
         <MdAdd />
       </button>
     </div>
   );
-}
+};
